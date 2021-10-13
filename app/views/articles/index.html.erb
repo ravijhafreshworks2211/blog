@@ -1,0 +1,27 @@
+<h2> Article </h2>
+<ul>
+  <% @articles.each do |article| %>
+    <li>
+      <a href="/articles/<%= article.id %>">
+        <%= article.title %>
+      </a>
+      <% if current_user %>
+      <a href="/articles/<%= article.id %>/edit">
+        edit
+      </a>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<p id="notice"><%= notice %></p>
+
+
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+  <h1> <a href="/articles/new/">Create New Article</a></h1>
+<% else %>
+  <%= link_to "Sign Up", signup_path %> or 
+  <%= link_to "Log In", login_path %>
+<% end %>
+<p id="notice"><%= notice %></p>

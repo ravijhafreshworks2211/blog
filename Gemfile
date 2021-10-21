@@ -62,3 +62,6 @@ gem 'sidekiq','~> 5.2.8'
 gem "letter_opener"
 gem "launchy"
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'rspec-rails'

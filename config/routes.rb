@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  get 'home/search'
   require 'sidekiq/web'
-  root "visitors#index"
+  root "articles#index"
 
   resources :articles do
     resources :comments
@@ -14,7 +15,7 @@ Rails.application.routes.draw do
 
   get '/hello/:name', to:'hello#say'
   post 'visitors/contact', to: 'visitors#contact'
-  
+  get 'visitors/sendemail', to: 'visitors#index'
   mount Sidekiq::Web => '/sidekiq'
   
 end

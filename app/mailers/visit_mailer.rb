@@ -4,7 +4,7 @@ class VisitMailer < ApplicationMailer
         @email = email
         @message = message
         mail(from: @email,
-             to: 'javier@badaboom.com',
+             to: 'noreply@freshworks.com',
              subject: 'New Visitor\'s Email')
       end
 end

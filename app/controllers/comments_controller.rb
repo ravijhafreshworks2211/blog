@@ -7,12 +7,16 @@ class CommentsController < ApplicationController
     def create
         @article = Article.find(params[:article_id])
         @comment = @article.comments.create(comment_params)
-        users_ids = params[:mentions][:users]
-        users_ids.each do |uid|
-            if !uid.empty?
-                @comment.mentions.push(Mention.create(user:User.find(uid),comment:@Comment))
-            end
+        users_ids = params[:mentions][:users].reject{|c| c.empty?}
+        #@comment.mentions = params[:mentions][:users].reject{|c| c.empty? }.each.map{ |user_id| Mention.new(user: User.find(user_id)) }
+        @comment.mentions_attributes = params[:mentions][:users].reject{|c| c.empty? }.each.map{ |user_id| {user_id: user_id} }
+        @comment.save 
+        emails = User.select('email').where(id:users_ids)
+        emails.each do |e|
+            map = {'email':e,'subject':'Mentioned','body':'You have been mentioned'}
+            PostmanWorker.perform_async(map,5)
         end
+        
         redirect_to article_path(@article)
     end
 

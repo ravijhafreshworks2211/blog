@@ -12,6 +12,8 @@ module Searchable extend ActiveSupport::Concern
           mappings dynamic: false do
             indexes :name, type: :text, analyzer: :autocomplete
             indexes :level, type: :keyword
+            indexes :title, type: :text, analyzer: :english
+            indexes :body, type: :text, analyzer: :english
           end
         end
      

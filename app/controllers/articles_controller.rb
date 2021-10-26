@@ -2,6 +2,7 @@ class ArticlesController < ApplicationController
   
   def index
     @articles = Article.all
+    @searched_article=[]
   end
 
   def show
@@ -40,6 +41,8 @@ class ArticlesController < ApplicationController
 
     redirect_to root_path
   end
+
+  
 
 
   private

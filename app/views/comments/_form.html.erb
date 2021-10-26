@@ -13,7 +13,7 @@
   </p>
 
   <p>
-  <%= collection_select(:mentions,:users, User.all, :id, :email,{:prompt => true}, {:multiple => true}) %>
+  <%= collection_select(:mentions,:users, User.all, :id, :email,{:prompt => false,:include_blank=>false},{:multiple => true}) %>
   <label for = "Mentions">Mention</label>
   </p>
 

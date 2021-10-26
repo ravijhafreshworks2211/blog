@@ -64,4 +64,7 @@ gem "launchy"
 gem 'sinatra', '>= 1.3.0', :require => nil
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'rspec-rails'
+group :development, :test do
+  gem 'rspec-rails', '~> 5.0.1'
+end
+gem 'rails-controller-testing', '~>1.0.5'

@@ -5,4 +5,5 @@ class PostmanWorker
     h = JSON.load(h)
     VisitMailer.contact_email(h['name'], h['email'], h['message']).deliver
   end
+  
 end

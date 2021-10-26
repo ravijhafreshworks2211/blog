@@ -1,0 +1,34 @@
+<h1>Elastic search for Articles</h1>
+
+<%= form_for :search_articles, url: '/visitors/search', method: :get do |form| %>
+  <%= form.text_field :query, value: params[:search_articles].presence && params[:search_articles][:query] %>
+  <%= form.submit 'Search' %>
+<% end %>
+
+<% unless @searched_article.nil? %>
+  <% if @searched_article.empty? %>
+    <h2>No article found matching your query.</h2>
+  <% else %>
+    <h2>Search results</h2>
+
+    <table style="width: 100%;">
+      <thead>
+         <tr>
+           <th>Title</th>
+           <th>Body</th>
+           <th>Action</th>
+         </tr>
+      </thead>
+
+      <tbody>
+        <% @searched_article.each do |article| %>
+          <tr>
+            <td><%= article.title %></td>
+            <td><%= article.body %></td>
+            <td><%= link_to 'View', article_path(article.id) %></td>
+          </tr>
+        <% end %>
+      <tbody>
+    </table>
+  <% end %>
+<% end %>

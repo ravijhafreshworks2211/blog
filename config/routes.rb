@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/hello/:name', to:'hello#say'
   post 'visitors/contact', to: 'visitors#contact'
   get 'visitors/sendemail', to: 'visitors#index'
+  get 'articles/byid/:id', to: 'articles#show'
+  get 'visitors/search', to: 'visitors#search_articles'
   mount Sidekiq::Web => '/sidekiq'
   
 end

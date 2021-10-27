@@ -6,7 +6,7 @@ class VisitorsController < ApplicationController
                           'email' => params[:email],
                           'message' => params[:message] })
      
-      PostmanWorker.perform_async(h, 5)
+      PostmanWorker.perform_async(h, 10)
 
   
       # if instead of sidekiq I was just sending email from rails

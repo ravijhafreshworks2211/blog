@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  
   get 'signup', to: 'users#new', as: 'signup'
   get 'login', to: 'sessions#new', as: 'login'
   get 'logout', to: 'sessions#destroy', as: 'logout'
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   get 'visitors/sendemail', to: 'visitors#index'
   get 'articles/byid/:id', to: 'articles#show'
   get 'visitors/search', to: 'visitors#search_articles'
+  resources :friends
   mount Sidekiq::Web => '/sidekiq'
   
 end

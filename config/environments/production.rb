@@ -117,4 +117,12 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+  amazon_prod:
+    service: S3
+    access_key_id: <%= Rails.application.credentials.aws[:access_key_id] %>
+    secret_access_key:
+      <%= Rails.application.credentials.aws[:secret_access_key] %>
+    region: <%= Rails.application.credentials.aws[:region] %>
+    bucket: <%= Rails.application.credentials.aws[:prod][:bucket] %>
 end

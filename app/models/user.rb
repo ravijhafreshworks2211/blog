@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :comments, through: :mentions
 
   validates :email, presence:true, uniqueness:true
+
+  has_one_attached :user_image
 end

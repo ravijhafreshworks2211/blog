@@ -77,6 +77,7 @@ Rails.application.configure do
 # to deliver to the browser instead of email
 config.action_mailer.delivery_method = :letter_opener
 
+config.cache_store= :redis_cache_store
 
 
 

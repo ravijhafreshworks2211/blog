@@ -33,5 +33,11 @@ class Article < ApplicationRecord
           }
         })
       end
+
+      def cached_comments_count
+        Rails.cache.fetch([self,"comments_count"]){
+          comments.count
+        }
+      end
   
 end
